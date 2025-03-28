@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checar código
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         
       - name: Programar Node.js
         uses: actions/setup-node@v3
@@ -27,7 +27,7 @@ jobs:
     needs: install_dependencies
     steps:
       - name: Checar código
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         
       - name: Programar Node.js
         uses: actions/setup-node@v3
@@ -42,7 +42,7 @@ jobs:
     needs: lint
     steps:
       - name: Checar código
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         
       - name: Programar Node.js
         uses: actions/setup-node@v3
@@ -57,7 +57,7 @@ jobs:
     needs: test
     steps:
       - name: Checar código
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         
       - name: Programar Node.js
         uses: actions/setup-node@v3
