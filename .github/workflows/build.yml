@@ -32,7 +32,7 @@ jobs:
       - name: Programar Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: '18'
 
       - name: Correr lint
         run: npm run lint
@@ -47,7 +47,7 @@ jobs:
       - name: Programar Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: '18'
 
       - name: Correr pruebas
         run: npm test
@@ -62,6 +62,6 @@ jobs:
       - name: Programar Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: '18'
       - name: Construir aplicación
         run: npm run build
