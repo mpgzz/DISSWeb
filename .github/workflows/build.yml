@@ -27,16 +27,20 @@ jobs:
     runs-on: ubuntu-latest
     needs: install_dependencies
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-        
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
+        - name: Checkout code
+          uses: actions/checkout@v3
+      
+        - name: Setup Node.js
+          uses: actions/setup-node@v3
+          with:
+            node-version: '18'
+      
+        - name: Install dependencies
+          run: npm install  # Ensure all dependencies (including ESLint) are installed
+      
+        - name: Run linter
+          run: npx eslint .
 
-      - name: Run linter
-        run: npm run lint
 
   test:
     runs-on: ubuntu-latest
