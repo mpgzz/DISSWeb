@@ -3,65 +3,67 @@ name: Build
 on:
   push:
     branches:
-      -main
+      - main
   pull_request:
     branches:
-      -main
+      - main
+
 jobs:
   install_dependencies:
     runs-on: ubuntu-latest
     steps:
-      - name: Checar código
+      - name: Checkout code
         uses: actions/checkout@v3
         
-      - name: Programar Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '16'
 
-      - name: Instalar dependencias
-        uses: npm install
+      - name: Install dependencies
+        run: npm install
 
   lint:
-    run-ons: ubuntu-latest
+    runs-on: ubuntu-latest
     needs: install_dependencies
     steps:
-      - name: Checar código
+      - name: Checkout code
         uses: actions/checkout@v3
         
-      - name: Programar Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
 
-      - name: Correr lint
+      - name: Run linter
         run: npm run lint
 
   test:
     runs-on: ubuntu-latest
     needs: lint
     steps:
-      - name: Checar código
+      - name: Checkout code
         uses: actions/checkout@v3
         
-      - name: Programar Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
 
-      - name: Correr pruebas
+      - name: Run tests
         run: npm test
 
   build:
     runs-on: ubuntu-latest
     needs: test
     steps:
-      - name: Checar código
+      - name: Checkout code
         uses: actions/checkout@v3
         
-      - name: Programar Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-      - name: Construir aplicación
+      
+      - name: Build application
         run: npm run build
