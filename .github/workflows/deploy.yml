@@ -1,4 +1,4 @@
-name: Deploy 
+name: Deploy
 
 on:
   push:
@@ -23,8 +23,8 @@ jobs:
       - name: Construir aplicación
         run: npm run build
 
-      - name: Deploy a github
+      - name: Deploy a GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GH_TOKEN }}  # Use your custom token here
           publish_dir: ./dist
