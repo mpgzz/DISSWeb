@@ -3,7 +3,7 @@ name: Deploy
 on:
   push:
     branches:
-      - main  # Replace with your main branch if different
+      - main  # Adjust if needed
 
 jobs:
   deploy:
@@ -26,5 +26,5 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GH_TOKEN }}  # Using the custom secret
-          publish_dir: ./dist  # Update to match your build output directory
+          github_token: ${{ secrets.GITHUB_TOKEN }}  # Use default GitHub token
+          publish_dir: ./dist  # Update based on build output
