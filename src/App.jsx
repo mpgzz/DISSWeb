@@ -1,21 +1,12 @@
-import { useState } from 'react'
-// import reactLogo from './assets/react.svg'  
-// import viteLogo from '/vite.svg'            
-
 import { Box, Typography } from '@mui/material';
-// import { AppBar, Toolbar, IconButton, Menu, Container, Avatar, Button, Tooltip, MenuItem } from '@mui/material'; 
-// import MenuIcon from '@mui/icons-material/Menu';
-// import AdbIcon from '@mui/icons-material/Adb';
 
-import './App.css'
+import './App.css';
 
-import ResponsiveAppBar from '../menuButton'
-import VarB from '../varBox'
+import ResponsiveAppBar from '../menuButton';
+import VarB from '../varBox';
 import BasicButtons from '../textAlignButton';
 
 function App() {
-  // const [count, setCount] = useState(0)  
-
   return (
     <>
       <ResponsiveAppBar className="ResponsiveAppBar" />
@@ -42,7 +33,7 @@ function App() {
         <Typography>Por Michelle González, A00837313 | Requerimientos de Software</Typography>
       </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
