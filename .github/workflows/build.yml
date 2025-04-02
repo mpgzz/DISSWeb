@@ -1,4 +1,4 @@
-name: Cl pipeline frontend
+name: Build y deploy de front
 
 on:
   push:
@@ -23,7 +23,7 @@ jobs:
             -   name: Instalar dependencias
                 run: npm install
 
-            -   name: Ejucutar lin
+            -   name: Ejecutar lin
                 run: npm run lint
                 continue-on-error: true
 
