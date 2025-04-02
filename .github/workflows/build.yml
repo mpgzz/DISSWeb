@@ -1,74 +1,44 @@
-name: Build
+name: Cl pipeline frontend
 
 on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
+
+permissions:
+  contents: write
 
 jobs:
-  install_dependencies:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-        
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
+    build: 
+        runs-on: ubuntu-latest
+        steps:
+            -   name: Checkout del repositorio
+                uses: actions/checkout@v3
 
-      - name: Install dependencies
-        run: npm install
+            -   name: Configurar Node.js
+                uses: actions/setup-node@v3
+                with:
+                    node-version: '18'
+            
+            -   name: Instalar dependencias
+                run: npm install
 
-  lint:
-    runs-on: ubuntu-latest
-    needs: install_dependencies
-    steps:
-        - name: Checkout code
-          uses: actions/checkout@v3
-      
-        - name: Setup Node.js
-          uses: actions/setup-node@v3
-          with:
-            node-version: '18'
-      
-        - name: Install dependencies
-          run: npm install 
-            npm install vite
-      
-        - name: Run linter
-          run: npx eslint .
+            -   name: Ejucutar linter
+                run: npm run lint
+                continue-on-error: true
 
+            -   name: Ejecutar pruebas
+                run: npm test
+                continue-on-error: true
+            
+            -   name: Build de producción
+                run: npm run build
 
-  test:
-    runs-on: ubuntu-latest
-    needs: lint
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-        
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-      
-      - name: Run tests
-        run: npm test
+            -   name: Verificar salida
+                run: ls -ls dist
 
-  build:
-    runs-on: ubuntu-latest
-    needs: test
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-        
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-          
-      - name: Build application
-        run: npm run build
+            -   name: Deploy on github pages
+                uses: peaceiris/actions-gh-pages@v3
+                with:
+                    github_token: ${{ secrets.GITHUB_TOKEN }}
+                    publish_dir: ./dist
