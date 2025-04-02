@@ -30,7 +30,7 @@ function App() {
         marginTop: '350px', width: '100%', textAlign: 'center', 
         color: 'gray', padding: '10px', fontSize: '15px'
       }}>
-        <Typography>Por Michelle González, A00837313 | Desarrollo de Software</Typography>
+        <Typography>Por Michelle González | Desarrollo de Software</Typography>
       </div>
     </>
   );
