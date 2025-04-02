@@ -36,7 +36,8 @@ jobs:
             node-version: '18'
       
         - name: Install dependencies
-          run: npm install  # Ensure all dependencies (including ESLint) are installed
+          run: npm install 
+            npm install vite
       
         - name: Run linter
           run: npx eslint .
@@ -53,7 +54,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-
+      
       - name: Run tests
         run: npm test
 
@@ -68,7 +69,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-      - name: Verify Vite installation
-        run: npx vite --version
+          
       - name: Build application
         run: npm run build
