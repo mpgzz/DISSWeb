@@ -17,12 +17,13 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Install dependencies (clean install)
+      - name: Install dependencies
         run: |
-          rm -rf node_modules
-          npm ci  
-          npm install -g vite 
-          npm install vite
+          npm install  # Install dependencies including Vite
+          
+      - name: Verify Vite installation
+        run: |
+          npx vite --version
 
 
       - name: Build application
