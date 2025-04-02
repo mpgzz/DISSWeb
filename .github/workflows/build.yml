@@ -68,6 +68,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-      
+      - name: Verify Vite installation
+        run: npx vite --version
       - name: Build application
         run: npm run build
